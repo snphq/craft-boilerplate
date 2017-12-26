@@ -61,7 +61,7 @@ const webpackBaseConfig = function(env) {
                     use: 'babel-loader'
                 },
                 {
-                  test: /\.sass$/,
+                  test: /\.scss$/,
                   use: ExtractTextPlugin.extract({
                       use: [{loader: "css-loader"}, {loader: "postcss-loader"}, {loader: "sass-loader"}],
                       fallback: "style-loader"
