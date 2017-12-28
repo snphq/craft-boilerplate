@@ -1,19 +1,15 @@
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // Set the webpack development configurations
-const webpackWatchConfig = {
+const webpackHotConfig = {
+  entry: {
+    dev: ['webpack/hot/dev-server', 'webpack-hot-middleware/client?reload=true&quiet=true']
+  },
+
   // Newly compiled file configuration
   output: {
     filename: 'javascripts/[name].bundle.js',
-  },
-
-  // Turn on watch mode. This means that after the initial build, webpack will continue to watch for changes in any of the resolved files.
-  watch: true,
-
-  // A set of options used to customize watch mode:
-  watchOptions: {
-    aggregateTimeout: 300,
   },
 
   // Enable any 'source-map'-like devtool if possible
@@ -21,9 +17,7 @@ const webpackWatchConfig = {
 
   // Plugins => Configure webpack plugins
   plugins: [
-    new ExtractTextPlugin({
-      filename: 'stylesheets/[name].bundle.css',
-    }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
 };
 
@@ -36,7 +30,7 @@ const webpackWatchConfig = {
 const webpackBaseConfig = require('./webpack.config.base.js');
 
 function webpackMergeConfig(env) {
-  return webpackMerge(webpackBaseConfig(env), webpackWatchConfig);
+  return webpackMerge(webpackBaseConfig(env), webpackHotConfig);
 }
 
 module.exports = webpackMergeConfig;

@@ -6,6 +6,7 @@
   "scripts": {
     "ds_store": "find . -name '.DS_Store' -type f -delete",
     "clean": "npm run ds_store && rimraf public/build",
+    "start": "npm run clean && WEBPACK_CONFIG_TYPE='watch' node ./devServer.js",
     "watch": "npm run clean && WEBPACK_CONFIG_TYPE='watch' webpack --progress --colors",
     "build": "npm run clean && WEBPACK_CONFIG_TYPE='build' webpack -p --progress --colors",
     "launch": "npm run clean && WEBPACK_CONFIG_TYPE='launch' webpack -p --progress --colors"
@@ -20,9 +21,14 @@
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.2.2",
+    "browser-sync": "^2.21.0",
     "css-loader": "^0.27.3",
+    "eslint": "^4.14.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "favicons-webpack-plugin": "0.0.7",
+    "fs-extra": "^5.0.0",
     "html-webpack-plugin": "^2.28.0",
     "node-sass": "^4.5.0",
     "postcss-loader": "^2.0.6",
@@ -31,6 +37,8 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.14.1",
     "webpack": "^2.2.1",
+    "webpack-dev-middleware": "^1.12.2",
+    "webpack-hot-middleware": "^2.21.0",
     "webpack-merge": "^4.1.0",
     "webpack-notifier": "^1.5.0"
   },

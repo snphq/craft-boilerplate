@@ -1,3 +1,6 @@
+// Require settings:
+const settings = require('../settings');
+
 // Require Webpack
 const webpack = require('webpack');
 
@@ -7,100 +10,93 @@ const path = require('path');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// Generates an HTML5 file for you that includes all your webpack bundles in the body using script tags
+// Generates an HTML5 file for you that includes
+// all your webpack bundles in the body using script tags
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
 
 const WebpackNotifierPlugin = require('webpack-notifier');
 
-// ADDED FOR AUTOPREFIXER
-const PostCSSPlugin = require('postcss-loader');
-
-
 // MAIN WEBPACK CONFIGURATION
-const webpackBaseConfig = function(env) {
+const webpackBaseConfig = () => ({
+  // Location of the index.js file
+  // Where Webpack's begins it module compilation process
+  entry: {
+    // File containing our custom code
+    global: './src/javascripts/global.js',
 
-    return {
+    // File containing our custom routes
+    router: './src/javascripts/router.js',
 
-        // Location of the index.js file
-        // Where Webpack's begins it module compilation process
-        entry: {
+    // File containing code from third party libraries
+    vendor: ['jquery', 'picturefill', 'svg4everybody'],
+  },
 
-          // File containing our custom code
-          global: "./src/javascripts/global.js",
+  // Newly compiled file configuration
+  output: {
+    // Save location of the newly compiled output file
+    path: path.resolve(__dirname, '../public/build'),
 
-          // File containing our custom routes
-          router: "./src/javascripts/router.js",
+    // What to call the newly compiled output file
+    // [name] will be replaced with the entry objects key value.
+    filename: '[name].config.base.js',
 
-          // File containing code from third party libraries
-          vendor: ['jquery', 'picturefill', 'svg4everybody' ]
-        },
+    // Path webpack will reference for looking for public files. Important for dynamic codesplitting
+    publicPath: '/build/',
 
-        // Newly compiled file configuration
-        output: {
+  },
 
-          // Save location of the newly compiled output file
-          path: path.resolve(__dirname, "../public/build"),
+  // Module Rules Systems => Configuration for webpack loaders
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+      {
+        test: /\.scss$/,
+        // use: ExtractTextPlugin.extract({
+        //     use: [{loader: 'css-loader'}, {loader: 'postcss-loader'}, {loader: 'sass-loader'}],
+        //     fallback: 'style-loader'
+        // }),
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'postcss-loader' }, { loader: 'sass-loader' }]
+      },
+    ],
+  },
 
-          // What to call the newly compiled output file
-          // [name] will be replaced with the entry objects key value.
-          filename: "[name].config.base.js",
+  // Don't follow/bundle these modules, but request them at runtime from the environment
+  // externals: {
+  //     Modernizr: 'modernizr'
+  // },
 
-          // Path webpack will reference for looking for public files. Important for dynamic codesplitting
-          publicPath: "/build/"
+  // Plugins => Configure webpack plugins
+  plugins: [
+    // The DefinePlugin allows you to create global constants which can be configured at compile time.
+    // Note: process.env.NODE_ENV is set within npm 'scripts'
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    }),
 
-        },
+    // Will remove duplicate modules that exist due to 'Code Splitting' to only include once within the specified bundle 'names'.
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor', 'manifest'],
+      minChunks: Infinity,
+      // minChunks ensures that no other module goes into the vendor chunk
+    }),
 
-        // Module Rules Systems => Configuration for webpack loaders
-        module: {
-            rules: [
-                {
-                    test: /\.js$/,
-                    exclude: /node_modules/,
-                    use: 'babel-loader'
-                },
-                {
-                  test: /\.scss$/,
-                  use: ExtractTextPlugin.extract({
-                      use: [{loader: "css-loader"}, {loader: "postcss-loader"}, {loader: "sass-loader"}],
-                      fallback: "style-loader"
-                  })
-                },
-            ]
-        },
+    // Generates an HTML5 file for you that includes all your webpack bundles in the body using script tags
+    // NOTE: Add excludeChunks: ['fallback']
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, '../src/webpack.templates/_webpack.template.wrapper.twig'),
+      // Abs path to template folder
+      filename: `${settings.webpackTemplateDir}/_webpack.template.wrapper.twig`,
+      showErrors: true,
+    }),
 
-        // Don't follow/bundle these modules, but request them at runtime from the environment
-        // externals: {
-        //     Modernizr: 'modernizr'
-        // },
-
-        // Plugins => Configure webpack plugins
-        plugins: [
-            // The DefinePlugin allows you to create global constants which can be configured at compile time.
-            // Note: process.env.NODE_ENV is set within npm "scripts"
-            new webpack.DefinePlugin({
-              'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-            }),
-
-            // Will remove duplicate modules that exist due to "Code Splitting" to only include once within the specified bundle "names".
-            new webpack.optimize.CommonsChunkPlugin({
-              names: ['vendor', 'manifest'],
-              minChunks: Infinity
-              // minChunks ensures that no other module goes into the vendor chunk
-            }),
-
-            // Generates an HTML5 file for you that includes all your webpack bundles in the body using script tags
-            // NOTE: Add excludeChunks: ['fallback']
-            new HtmlWebpackPlugin({
-              template: './src/webpack.templates/_webpack.template.wrapper.twig',
-              filename: '../static/templates/_webpack.templates/_webpack.template.wrapper.twig',
-            }),
-
-            new WebpackNotifierPlugin({alwaysNotify: true}),
-
-        ]
-    }
-};
+    new WebpackNotifierPlugin({ alwaysNotify: true }),
+  ],
+});
 
 module.exports = webpackBaseConfig;
