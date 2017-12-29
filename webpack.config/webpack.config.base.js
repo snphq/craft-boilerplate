@@ -1,6 +1,3 @@
-// Require settings:
-const settings = require('../settings');
-
 // Require Webpack
 const webpack = require('webpack');
 
@@ -90,7 +87,7 @@ const webpackBaseConfig = () => ({
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/webpack.templates/_webpack.template.wrapper.twig'),
       // Abs path to template folder
-      filename: `${settings.webpackTemplateDir}/_webpack.template.wrapper.twig`,
+      filename: path.resolve(__dirname, '../public/static/templates/_webpack.templates/_webpack.template.wrapper.twig'),
       showErrors: true,
     }),
   ],

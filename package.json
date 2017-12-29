@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "ds_store": "find . -name '.DS_Store' -type f -delete",
+    "bs": "browser-sync start -p localhost:8888 -f public --no-open",
     "clean": "npm run ds_store && rimraf public/build",
-    "start": "npm run clean && WEBPACK_CONFIG_TYPE='watch' node ./devServer.js",
+    "start": "concurrently --kill-others 'npm run watch' 'npm run bs'",
     "watch": "npm run clean && WEBPACK_CONFIG_TYPE='watch' webpack --progress --colors",
     "build": "npm run clean && WEBPACK_CONFIG_TYPE='build' webpack -p --progress --colors",
     "launch": "npm run clean && WEBPACK_CONFIG_TYPE='launch' webpack -p --progress --colors"
@@ -22,6 +23,7 @@
     "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.2.2",
     "browser-sync": "^2.21.0",
+    "concurrently": "^3.5.1",
     "css-loader": "^0.27.3",
     "eslint": "^4.14.0",
     "eslint-config-airbnb-base": "^12.1.0",
@@ -37,8 +39,6 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.14.1",
     "webpack": "^2.2.1",
-    "webpack-dev-middleware": "^1.12.2",
-    "webpack-hot-middleware": "^2.21.0",
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {

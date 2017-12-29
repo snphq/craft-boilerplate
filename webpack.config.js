@@ -1,8 +1,5 @@
+const webpackConfig = require(`./webpack.config/webpack.config.${process.env.WEBPACK_CONFIG_TYPE}.js`); // eslint-disable-line import/no-dynamic-require
 
-console.log('WEBPACK_CONFIG_TYPE: ' + process.env.WEBPACK_CONFIG_TYPE);
+console.log(`WEBPACK_CONFIG_TYPE: ${process.env.WEBPACK_CONFIG_TYPE}`); // eslint-disable-line no-console
 
-function buildWebpackConfig(env) {
-  return require('./webpack.config/webpack.config.' + process.env.WEBPACK_CONFIG_TYPE + '.js')(env)
-}
-
-module.exports = buildWebpackConfig;
+module.exports = webpackConfig;
