@@ -38,6 +38,7 @@ _[Back to top](#table-of-contents)_
 
 Use Node.js scripts to run build tools.
 
+* `$ npm start` - Start development server with live reload.
 * `$ npm run watch` - Recompiles files whenever they change.
 * `$ npm run build` - Creates production ready code.
 
