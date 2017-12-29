@@ -73,20 +73,23 @@ const webpackBaseConfig = () => ({
 
   // Plugins => Configure webpack plugins
   plugins: [
-    // The DefinePlugin allows you to create global constants which can be configured at compile time.
+    // The DefinePlugin allows you to create global constants
+    // which can be configured at compile time.
     // Note: process.env.NODE_ENV is set within npm 'scripts'
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
 
-    // Will remove duplicate modules that exist due to 'Code Splitting' to only include once within the specified bundle 'names'.
+    // Will remove duplicate modules that exist due to 'Code Splitting'
+    // to only include once within the specified bundle 'names'.
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest'],
       minChunks: Infinity,
       // minChunks ensures that no other module goes into the vendor chunk
     }),
 
-    // Generates an HTML5 file for you that includes all your webpack bundles in the body using script tags
+    // Generates an HTML5 file for you that includes all your webpack bundles
+    // in the body using script tags
     // NOTE: Add excludeChunks: ['fallback']
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/webpack.templates/_webpack.template.wrapper.twig'),
