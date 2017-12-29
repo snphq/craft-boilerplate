@@ -8,7 +8,8 @@ const webpackWatchConfig = {
     filename: 'javascripts/[name].bundle.js',
   },
 
-  // Turn on watch mode. This means that after the initial build, webpack will continue to watch for changes in any of the resolved files.
+  // Turn on watch mode. This means that after the initial build,
+  // webpack will continue to watch for changes in any of the resolved files.
   watch: true,
 
   // A set of options used to customize watch mode:

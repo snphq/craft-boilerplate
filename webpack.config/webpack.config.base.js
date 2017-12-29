@@ -14,10 +14,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // all your webpack bundles in the body using script tags
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-// const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
-
-const WebpackNotifierPlugin = require('webpack-notifier');
-
 // MAIN WEBPACK CONFIGURATION
 const webpackBaseConfig = () => ({
   // Location of the index.js file
@@ -57,11 +53,11 @@ const webpackBaseConfig = () => ({
       },
       {
         test: /\.scss$/,
-        // use: ExtractTextPlugin.extract({
-        //     use: [{loader: 'css-loader'}, {loader: 'postcss-loader'}, {loader: 'sass-loader'}],
-        //     fallback: 'style-loader'
-        // }),
-        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'postcss-loader' }, { loader: 'sass-loader' }]
+
+        use: ExtractTextPlugin.extract({
+          use: ['css-loader', 'postcss-loader', 'sass-loader'],
+          fallback: 'style-loader',
+        }),
       },
     ],
   },
@@ -97,8 +93,6 @@ const webpackBaseConfig = () => ({
       filename: `${settings.webpackTemplateDir}/_webpack.template.wrapper.twig`,
       showErrors: true,
     }),
-
-    new WebpackNotifierPlugin({ alwaysNotify: true }),
   ],
 });
 
