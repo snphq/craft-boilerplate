@@ -67,5 +67,13 @@
 
 		{# NOTE: Webpack Script Bundles Auto Created By HtmlWebpackPlugin and placed here #}
 
+    {# Browser-sync script #}
+    <% if (htmlWebpackPlugin.options.env.IS_BROWSER_SYNC_ENABLED) { %>
+      <script id="__bs_script__">
+        //<![CDATA[
+          document.write("<script async src='http://HOST:<%= htmlWebpackPlugin.options.env.npm_package_config_browser_sync_port %>/browser-sync/browser-sync-client.js?v=2.21.0'><\/script>".replace("HOST", location.hostname));
+        //]]>
+      </script>
+    <% } %>
 	</body>
 </html>

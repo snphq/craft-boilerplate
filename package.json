@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "ds_store": "find . -name '.DS_Store' -type f -delete",
-    "bs": "browser-sync start -p ${PROXY:=localhost:8888} -f public --no-open",
+    "bs": "browser-sync start --port $npm_package_config_browser_sync_port --files public --no-open",
     "clean": "npm run ds_store && rimraf public/build",
-    "start": "concurrently --kill-others 'npm run watch' 'npm run bs'",
+    "start": "IS_BROWSER_SYNC_ENABLED=true concurrently --kill-others 'npm run watch' 'npm run bs'",
     "watch": "npm run clean && WEBPACK_CONFIG_TYPE='watch' webpack --progress --colors",
     "build": "npm run clean && WEBPACK_CONFIG_TYPE='build' webpack -p --progress --colors",
     "launch": "npm run clean && WEBPACK_CONFIG_TYPE='launch' webpack -p --progress --colors"
+  },
+  "config": {
+    "browser_sync_port": 38264
   },
   "repository": {
     "type": "git",

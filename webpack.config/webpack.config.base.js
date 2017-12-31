@@ -89,6 +89,7 @@ const webpackBaseConfig = () => ({
       // Abs path to template folder
       filename: path.resolve(__dirname, '../public/static/templates/_webpack.templates/_webpack.template.wrapper.twig'),
       showErrors: true,
+      env: process.env,
     }),
   ],
 });
