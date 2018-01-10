@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "ds_store": "find . -name '.DS_Store' -type f -delete",
+    "lint": "eslint .",
     "bs": "browser-sync start --port $npm_package_config_browser_sync_port --files public --no-open",
     "clean": "npm run ds_store && rimraf public/build",
     "start": "IS_BROWSER_SYNC_ENABLED=true concurrently --kill-others 'npm run watch' 'npm run bs'",

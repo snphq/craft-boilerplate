@@ -1,7 +1,12 @@
 module.exports = {
-    "extends": "airbnb-base",
+  extends: "airbnb-base",
 
-    "rules": {
-      "no-param-reassign": [2, { "props": false }]
-    }
+  env: {
+    browser: true,
+    node: true,
+  },
+
+  globals: {
+    System: true,
+  },
 };
