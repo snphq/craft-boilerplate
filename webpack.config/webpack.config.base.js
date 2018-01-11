@@ -16,14 +16,14 @@ const webpackBaseConfig = () => ({
   // Location of the index.js file
   // Where Webpack's begins it module compilation process
   entry: {
+    // File containing code from third party libraries
+    vendor: ['babel-polyfill'],
+
     // File containing our custom code
     global: './src/javascripts/global.js',
 
     // File containing our custom routes
     router: './src/javascripts/router.js',
-
-    // File containing code from third party libraries
-    vendor: ['jquery', 'picturefill', 'svg4everybody'],
   },
 
   // Newly compiled file configuration

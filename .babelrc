@@ -1,7 +1,4 @@
 {
-  "plugins": [
-    "transform-runtime"
-  ],
   "presets": [
     ["env", {
       "targets": {
@@ -13,5 +10,9 @@
       }
     }],
     "stage-2"
+  ],
+
+  "plugins": [
+    "transform-runtime"
   ]
 }
