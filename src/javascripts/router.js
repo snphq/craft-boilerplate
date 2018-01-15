@@ -8,7 +8,7 @@ switch (pathParams[1]) {
   // Home Page
   case '':
     // Import the module
-    import('./routes/home.js').then(() => {
+    import('./pages/home').then(() => {
       console.log('import -> Home.js');
     });
 
@@ -18,7 +18,7 @@ switch (pathParams[1]) {
   // News Page
   case 'news':
     // Import the module
-    import('./routes/news.js').then(() => {
+    import('./pages/news').then(() => {
       console.log('import -> news.js');
     });
 

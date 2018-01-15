@@ -25,7 +25,7 @@ return array(
         'port' => 8888,
         'user' => 'root', // The database username to connect with.
         'password' => 'root', // The database password to connect with.
-        'database' => 'craft_webpack_test', // The name of the database to select.
+        'database' => 'craft_webpack_test2', // The name of the database to select.
     ),
 		/**
      * Environment: Development

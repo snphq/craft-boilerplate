@@ -19,6 +19,7 @@ return array(
         'enableCsrfProtection' => true, // Enable CSRF Protection (recommended, will be enabled by default in Craft 3)
         'cpTrigger' => 'admin', // Control Panel trigger word
         'defaultWeekStartDay' => 0, // Default Week Start Day (0 = Sunday, 1 = Monday...)
+        'errorTemplatePrefix' => "_pages/"
         // 'environmentVariables' => array(),
     ),
     /**
