@@ -11,7 +11,9 @@
     "start": "IS_BROWSER_SYNC_ENABLED=true concurrently --kill-others 'npm run watch' 'npm run bs'",
     "watch": "npm run clean && WEBPACK_CONFIG_TYPE='watch' webpack --progress --colors",
     "build": "npm run clean && WEBPACK_CONFIG_TYPE='build' webpack -p --progress --colors",
-    "launch": "npm run clean && WEBPACK_CONFIG_TYPE='launch' webpack -p --progress --colors"
+    "launch": "npm run clean && WEBPACK_CONFIG_TYPE='launch' webpack -p --progress --colors",
+    "generate": "node ./generator/index.js",
+    "g": "npm run generate"
   },
   "config": {
     "browser_sync_port": 38264
