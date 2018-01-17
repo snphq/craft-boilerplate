@@ -19,3 +19,4 @@ npm-debug.log*
 ### public
 /public/build
 /public/static/templates/_webpack.templates
+/public/uploads
