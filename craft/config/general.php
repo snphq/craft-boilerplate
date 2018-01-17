@@ -7,6 +7,9 @@
  * You can see a list of the default settings in craft/app/etc/config/defaults/general.php
  */
 
+$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
+$siteUrl = $protocol.'//'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/';
+
 return array(
     /**
      * Environment: Global
@@ -14,7 +17,7 @@ return array(
      * NOTE: '*' key is required to trigger multi-environment config support, even if you end up not needing it.
      */
 		'*' => array(
-        'siteUrl' => null, // Base site URL
+        'siteUrl' => $siteUrl, // Base site URL
         'omitScriptNameInUrls' => true, // Whether "index.php" should be visible in URLs (true, false, "auto")
         'enableCsrfProtection' => true, // Enable CSRF Protection (recommended, will be enabled by default in Craft 3)
         'cpTrigger' => 'admin', // Control Panel trigger word

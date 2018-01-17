@@ -22,7 +22,7 @@ return array(
      */
 		'local' => array(
         'server' => 'localhost', // The database server name or IP address. Usually this is 'localhost' or '127.0.0.1'.
-        'port' => 8888,
+        'port' => 8889,
         'user' => 'root', // The database username to connect with.
         'password' => 'root', // The database password to connect with.
         'database' => 'craft_example', // The name of the database to select.
