@@ -24,6 +24,7 @@ const webpackWatchConfig = {
   plugins: [
     new ExtractTextPlugin({
       filename: 'stylesheets/[name].bundle.css',
+      allChunks: true,
     }),
   ],
 };

@@ -13,6 +13,7 @@ const webpackProductionConfig = {
   plugins: [
     new ExtractTextPlugin({
       filename: 'stylesheets/[name].[contenthash].bundle.min.css',
+      allChunks: true,
     }),
     // Generator robots.txt
     new RobotstxtPlugin({
