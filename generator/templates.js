@@ -1,14 +1,14 @@
 module.exports = {
-  getPackageJsonFileText: inputName =>
-    `{\n  "main": "./${inputName}.js"\n}`,
+  getIndexJsFileText: name =>
+    `export { default } from './${name}';\n`,
 
-  getMainJsFileText: inputName =>
-    `import './${inputName}.scss';\n`,
+  getMainJsFileText: name =>
+    `import './${name}.scss';\n`,
 
-  getMainStyleFileText: inputName =>
-    `.${inputName} {\n\n}`,
+  getMainStyleFileText: name =>
+    `.${name} {\n\n}`,
 
-  getTemplateFileText: (inputName, type) => {
+  getTemplateFileText: (name, type) => {
     if (type === 'page') {
       return ('{% extends "_layout" %}\n\n{% block main %}\n\n{% endblock %}');
     }

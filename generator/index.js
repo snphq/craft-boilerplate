@@ -4,7 +4,7 @@ const path = require('path');
 const { getAvalibleTypes, createComponent } = require('./utils');
 
 const {
-  getPackageJsonFileText,
+  getIndexJsFileText,
   getMainJsFileText,
   getMainStyleFileText,
   getTemplateFileText,
@@ -43,7 +43,7 @@ const templateFolderPath = path.join(TEMPLATE_PATH, `_${folder}`, inputName);
 createComponent(jsFolderPath, inputName, type, [
   [`${inputName}.js`, getMainJsFileText],
   [`${inputName}.scss`, getMainStyleFileText],
-  ['package.json', getPackageJsonFileText],
+  ['index.js', getIndexJsFileText],
 ]);
 
 createComponent(templateFolderPath, inputName, type, [
