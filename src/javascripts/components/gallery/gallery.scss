@@ -1,0 +1,8 @@
+.gallery {
+  position: relative;
+  transition: opacity 400ms;
+
+  &:not(.slick-initialized) {
+    opacity: 0;
+  }
+}

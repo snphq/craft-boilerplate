@@ -17,7 +17,7 @@ const webpackBaseConfig = () => ({
   // Where Webpack's begins it module compilation process
   entry: {
     // File containing code from third party libraries
-    vendor: ['babel-polyfill'],
+    vendor: ['babel-polyfill', 'jquery', 'slick-carousel'],
 
     // File containing our custom code
     global: './src/javascripts/global.js',

@@ -1,0 +1,18 @@
+{#
+  gallery (required) - gallery field
+#}
+
+{% set width = 800 %}
+{% set height = 500 %}
+
+<div class="gallery" data-js-gallery style="width: {{ width }}px;">
+  {% for item in gallery %}
+    <div>
+      <img
+        widht="{{ width }}"
+        height="{{ height }}"
+        src="{{ item.image.first.url({ width: width, height: height }) }}"
+        alt="{{ item.caption }}">
+    </div>
+  {% endfor %}
+</div>
