@@ -2,7 +2,6 @@
 const pathName = window.location.pathname;
 const pathParams = pathName.split('/');
 
-
 // Dynamically Load Modules
 switch (pathParams[1]) {
   // Home Page
@@ -13,16 +12,6 @@ switch (pathParams[1]) {
     });
 
     console.log('Import "Home Page" modules');
-    break;
-
-  // News Page
-  case 'news':
-    // Import the module
-    import('./pages/news').then(() => {
-      console.log('import -> news.js');
-    });
-
-    console.log('Import "News Page" modules');
     break;
 
   // Fallback Page
