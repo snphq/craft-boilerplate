@@ -7,7 +7,7 @@
  * You can see a list of the default settings in craft/app/etc/config/defaults/general.php
  */
 
-$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
+$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https:' : 'http:';
 $siteUrl = $protocol.'//'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/';
 
 return array(
