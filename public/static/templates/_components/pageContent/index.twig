@@ -1,0 +1,15 @@
+{#
+  pageContent (required) - pageContent field
+#}
+
+{% for block in pageContent %}
+	{% switch block.type.handle %}
+
+		{% case "gallery" %}
+      {% include "_components/gallery" with { gallery: block.gallery } %}
+
+    {% case "formatedText" %}
+      {% include "_components/formattedText" with { formattedText: block.formattedText } %}
+
+	{% endswitch %}
+{% endfor %}

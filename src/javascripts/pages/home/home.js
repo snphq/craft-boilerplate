@@ -1,6 +1,4 @@
-import gallery from '../../components/gallery';
+import '../../components/pageContent';
 import './home.scss';
-
-gallery.init();
 
 console.log('Home.js file has imported');

@@ -2,17 +2,32 @@
   gallery (required) - gallery field
 #}
 
-{% set width = 800 %}
-{% set height = 500 %}
+{% set defaultWidth = 800 %}
+{% set defaultHeight = 500 %}
 
-<div class="gallery" data-js-gallery style="width: {{ width }}px;">
-  {% for item in gallery %}
-    <div>
-      <img
-        widht="{{ width }}"
-        height="{{ height }}"
-        src="{{ item.image.first.url({ width: width, height: height }) }}"
-        alt="{{ item.caption }}">
-    </div>
-  {% endfor %}
-</div>
+{% for block in gallery %}
+  {% set settings = {} %}
+  {% set width = block.settings.width == 0 ? defaultWidth : block.settings.width %}
+  {% set height = block.settings.height == 0 ? defaultHeight : block.settings.height %}
+
+  {% for key, value in block.settings.content %}
+    {% if key not in ["id", "elementId", "locale", "title", "width", "hight"] %}
+      {% set settings = settings|merge({ (key): value }) %}
+    {% endif %}
+  {%  endfor %}
+  <div
+    class="gallery"
+    data-js-gallery="{{ settings|json_encode }}"
+    style="width: {{ width }}px;"
+  >
+    {% for item in block.items %}
+      <div>
+        <img
+          widht="{{ width }}"
+          height="{{ height }}"
+          src="{{ item.image.first.url({ width: width, height: height }) }}"
+          alt="{{ item.caption }}">
+      </div>
+    {% endfor %}
+  </div>
+{% endfor %}
