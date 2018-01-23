@@ -8,10 +8,19 @@ switch (pathParams[1]) {
   case '':
     // Import the module
     import('./pages/home').then(() => {
-      console.log('import -> Home.js');
+      console.log('import -> home.js');
     });
 
     console.log('Import "Home Page" modules');
+    break;
+
+  case 'example':
+    // Import the module
+    import('./pages/example').then(() => {
+      console.log('import -> example.js');
+    });
+
+    console.log('Import "Example Page" modules');
     break;
 
   // Fallback Page
