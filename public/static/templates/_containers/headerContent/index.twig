@@ -1,0 +1,10 @@
+{#
+# header - global field
+#}
+
+{% set header = craft.globals.getSetByHandle('header') %}
+
+<header class="header-content">
+  <div class="header-content--text">{{ header.plainText }}</div>
+  {% include "_components/menu" with { menu: header.menu } %}
+</header>

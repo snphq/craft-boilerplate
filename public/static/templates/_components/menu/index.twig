@@ -1,0 +1,21 @@
+{#
+ # menu - menu field (require)
+#}
+
+<ul class="menu">
+  {% for item in menu %}
+    {% set href = (item.type == 'entryLink') ? item.entry.first.url : item.outerUrl %}
+    {% set title = item.linkTitle %}
+    {% set isTargetBlank = item.openOnNewTab == 1 %}
+
+    <li class="menu--item">
+        <a
+            class="menu--link"
+            href="{{ href }}"
+            {% if isTargetBlank %}target="__blank"{% endif %}
+        >
+            {{ title }}
+        </a>
+    </li>
+  {% endfor %}
+</ul>
