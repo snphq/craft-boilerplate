@@ -1,3 +1,5 @@
+const { aliasesArr } = require('./utils/aliases');
+
 module.exports = {
   parser: 'babel-eslint',
   extends: 'airbnb-base',
@@ -6,6 +8,12 @@ module.exports = {
   env: {
     browser: true,
     node: true,
+  },
+
+  settings: {
+    'import/resolver': {
+      'alias': aliasesArr
+    },
   },
 
   rules: {

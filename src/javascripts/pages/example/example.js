@@ -1,2 +1,2 @@
-import '../../components/pageContent';
+import 'components/pageContent';
 import './example.scss';

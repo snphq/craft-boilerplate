@@ -1,3 +1,6 @@
+// Require aliases
+const { aliasesObj } = require('../utils/aliases');
+
 // Require Webpack
 const webpack = require('webpack');
 
@@ -57,6 +60,10 @@ const webpackBaseConfig = () => ({
         }),
       },
     ],
+  },
+
+  resolve: {
+    alias: aliasesObj,
   },
 
   // Don't follow/bundle these modules, but request them at runtime from the environment

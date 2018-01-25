@@ -1,2 +1,2 @@
-import '../../components/menu';
+import 'components/menu';
 import './headerContent.scss';

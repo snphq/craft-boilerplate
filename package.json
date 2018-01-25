@@ -54,6 +54,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
+    "eslint-import-resolver-alias": "^1.0.3",
     "jquery": "^3.2.1",
     "slick-carousel": "^1.8.1"
   }
