@@ -1,4 +1,4 @@
 import 'containers/headerContent';
-import '../stylesheets/styles.scss';
+import '../styles/global.scss';
 
 console.log('Global.js file has imported');
