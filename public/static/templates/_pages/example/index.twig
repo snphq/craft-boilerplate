@@ -1,6 +1,9 @@
 {% extends "_layout" %}
 
 {% block main %}
-  <h1>{{ entry.title }}</h1>
-  {% include "_components/pageContent" with { pageContent: entry.pageContent } %}
+  <div class="examplePage">
+    <h1>{{ entry.title }}</h1>
+    {% include "_components/pageContent" with { pageContent: entry.pageContent } %}
+    <img src="/static/images/animal.jpeg" alt="animal" />
+  </div>
 {% endblock %}
