@@ -23,10 +23,10 @@ const webpackBaseConfig = () => ({
     vendor: ['babel-polyfill', 'jquery', 'slick-carousel'],
 
     // File containing our custom code
-    global: './src/javascripts/global.js',
+    global: './src/global.js',
 
     // File containing our custom routes
-    router: './src/javascripts/router.js',
+    router: './src/router.js',
   },
 
   // Newly compiled file configuration

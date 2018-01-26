@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const ALIASES_DIR = path.resolve(__dirname, '../src/javascripts');
+const ALIASES_DIR = path.resolve(__dirname, '../src');
 
 const isDirectory = source => fs.lstatSync(source).isDirectory();
 
