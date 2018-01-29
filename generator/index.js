@@ -10,7 +10,7 @@ const {
   getTemplateFileText,
 } = require('./templates');
 
-const JS_PATH = path.resolve('./src/javascripts');
+const SRC_PATH = path.resolve('./src');
 const TEMPLATE_PATH = path.resolve('./public/static/templates');
 
 const FOLDERS = {
@@ -37,7 +37,7 @@ if (!type) {
 }
 
 const folder = FOLDERS[type];
-const jsFolderPath = path.join(JS_PATH, folder, inputName);
+const jsFolderPath = path.join(SRC_PATH, folder, inputName);
 const templateFolderPath = path.join(TEMPLATE_PATH, `_${folder}`, inputName);
 
 createComponent(jsFolderPath, inputName, type, [
