@@ -1,20 +1,9 @@
 const webpackMerge = require('webpack-merge');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
 
 // Set the webpack production configurations
-const webpackLaunchConfig = {
+const webpackProductionConfig = {
   plugins: [
-    // Generate favicon
-    new FaviconsWebpackPlugin({
-      logo: './src/favicon.png',
-      persistentCache: true,
-      icons: {
-        appleStartup: false,
-        firefox: false,
-      },
-    }),
-
     // Generator robots.txt
     new RobotstxtPlugin({
       dest: '../',
@@ -29,10 +18,10 @@ const webpackLaunchConfig = {
   * Note: Done with webpackMerge
   ******************************
 */
-const webpackBuildConfig = require('./webpack.config.build.js');
+const webpackStagingConfig = require('./webpack.config.staging.js');
 
 function webpackMergeConfig(env) {
-  return webpackMerge(webpackBuildConfig(env), webpackLaunchConfig);
+  return webpackMerge(webpackStagingConfig(env), webpackProductionConfig);
 }
 
 module.exports = webpackMergeConfig;

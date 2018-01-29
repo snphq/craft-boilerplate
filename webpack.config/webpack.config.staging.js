@@ -1,9 +1,10 @@
 const webpackMerge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 // Set the webpack production configurations
-const webpackProductionConfig = {
+const webpackStagingConfig = {
   // Newly compiled file configuration
   output: {
     filename: 'javascripts/[name].[chunkhash].bundle.min.js',
@@ -15,6 +16,16 @@ const webpackProductionConfig = {
       filename: 'stylesheets/[name].[contenthash].bundle.min.css',
       allChunks: true,
     }),
+
+    new FaviconsWebpackPlugin({
+      logo: './src/favicon.png',
+      persistentCache: true,
+      icons: {
+        appleStartup: false,
+        firefox: false,
+      },
+    }),
+
     // Generator robots.txt
     new RobotstxtPlugin({
       dest: '../',
@@ -37,7 +48,7 @@ const webpackProductionConfig = {
 const webpackBaseConfig = require('./webpack.config.base.js');
 
 function webpackMergeConfig(env) {
-  return webpackMerge(webpackBaseConfig(env), webpackProductionConfig);
+  return webpackMerge(webpackBaseConfig(env), webpackStagingConfig);
 }
 
 module.exports = webpackMergeConfig;

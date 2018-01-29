@@ -10,8 +10,8 @@
     "clean": "npm run ds_store && rimraf public/build",
     "start": "cross-env IS_BROWSER_SYNC_ENABLED=true concurrently --kill-others 'npm run watch' 'npm run bs'",
     "watch": "npm run clean && cross-env WEBPACK_CONFIG_TYPE='watch' webpack --progress --colors",
-    "build": "npm run clean && cross-env WEBPACK_CONFIG_TYPE='build' webpack -p --progress --colors",
-    "launch": "npm run clean && cross-env WEBPACK_CONFIG_TYPE='launch' webpack -p --progress --colors",
+    "staging": "npm run clean && cross-env WEBPACK_CONFIG_TYPE='staging' webpack -p --progress --colors",
+    "production": "npm run clean && cross-env WEBPACK_CONFIG_TYPE='production' webpack -p --progress --colors",
     "generate": "node ./generator/index.js",
     "g": "npm run generate"
   },
