@@ -13,10 +13,14 @@
     "staging": "npm run clean && cross-env WEBPACK_CONFIG_TYPE='staging' webpack -p --progress --colors",
     "production": "npm run clean && cross-env WEBPACK_CONFIG_TYPE='production' webpack -p --progress --colors",
     "generate": "node ./generator/index.js",
-    "g": "npm run generate"
+    "g": "npm run generate",
+    "heroku-postbuild": "npm run staging"
   },
   "config": {
     "browser_sync_port": 38264
+  },
+  "engines": {
+    "node": ">=8.6.0"
   },
   "repository": {
     "type": "git",
