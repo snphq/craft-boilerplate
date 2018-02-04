@@ -1,89 +1,88 @@
-# Craft CMS Project Boilerplate
+# SNP Craft CMS Project Boilerplate
 
-This is the project scaffolding MilesHerndon uses for all of our Craft CMS projects.
+##### Cодержание
 
-##### Table of Contents
-
-1. [Dependencies](#Dependencies)
-1. [Installation](#Installation)
-1. [Workflow](#workflow)
-1. [Under the Hood](#under-the-hood)
-1. [Key Collaborators](#key Collaborators)
-1. [License](#license)
+1. [Установка](#Установка)
+1. [Разработка](#Разработка)
+1. [Структура](#Структура)
+1. [Лицензия](#license)
 
 *****
 
+## Установка
+1. ### Склонируйте этот репозиторий:
+   ```bash
+   git clone https://github.com/snphq/craft-boilerplate.git
+   ```
+1. ### Установка зависимостей Craft CMS (выберите один из вариантов установки)
+    1. Установка MAMP
+        1. Скачайте и установите [MAMP](https://www.mamp.info/en/downloads/)
+        1. Запустите MAMP.
+        1. Выберите Preferences...
+        1. Выберите вкладку ports
+        1. Нажмите на кнопку Set WEB & MySQL ports to 80 & 3306 (используя MAMP необходимо настроить apatch на 80 порт, так как на других портах есть проблема с загрузкой асетов через админку)
+        1. Перейдите на вкладку Web Server, выберите Apatch и папку public вашего проекта
+        1. Закройте настройки и нажмите Start Servers
+        1. Нажмите Open WebStart page, выберите Tools -> phpMyAdmin
+        1. Создайте новую базу данных или импортируйте craft_example
 
-## Dependencies
-* [Node.js](https://nodejs.org/en/)
-* [Craft CMS](https://craftcms.com)
+    1. Глобальная установка
 
-_[Back to top](#table-of-contents)_
+        1. Установите необходимые зависимости в соответствии с [Craft CMS requirements](https://craftcms.com/docs/requirements)
 
-*****
+        2. Создайте новую базу данных или импортируйте craft_example
 
-## Installation
+1. ### Установка зависимостей системы сборки
+   1. Установите [Node.js](https://nodejs.org/en/) версии 6 или выше, если не установлен.
+   2. Выполните ```npm i```
 
-Download or clone this project scaffold into your working directory, and then run:
+1. ### Настройка Craft CMS
+    1. Выполните шаги 2, 4, 5 из раздела [Installing](https://craftcms.com/docs/installing)
 
-``` sh
-$ npm install
+## Разработка
+1. Выполните ```npm start``` для запуска системы сборки в watch режиме.
+2. Откройте соответсвующий локальный хост в браузере (по умолчанию http://localhost)
+
+## Структура проекта
 ```
-
-_[Back to top](#table-of-contents)_
-
-*****
-
-## Workflow
-
-Use Node.js scripts to run build tools.
-
-* `$ npm start` - Start development server with live reload.
-* `$ npm run watch` - Recompiles files whenever they change.
-* `$ npm run build` - Creates production ready code.
-
-After running `` $ npm run watch `` or `` $ npm run build ``, your deploy-ready code will be taken from the ``./src/`` directory and placed within the ``./public/build/`` directory of your project. However, the webpack generated templates will be placed within the ``./public/static/templates/_webpack.templates`` directory of your project so Craft CMS has access to them.
-
-_[Back to top](#table-of-contents)_
-
-*****
-
-## Under the Hood
-This project scaffolding is pretty opinionated and makes use of the following tools, open source projects, and architecture methodologies:
-
-* [Webpack](https://webpack.js.org/) - A bundler for javascript and friends.
-* [Sass](http://sass-lang.com/) - CSS extension language
-* [ECMAScript 2015 modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla) - JavaScript's built-in modules.
-* [SMACSS](https://smacss.com/) - Methodology for organizing scalable and modular CSS architectures
-* [BEM](http://getbem.com/) -  Block Element Modifier is a methodology, that helps you to achieve reusable components and code sharing in the front-end
-* [Augmented ITCSS](https://github.com/m-soyka/Augment-ITCSS) - This is an augmented css folder structure that originates from the ITCSS architecture and uses SMACSS and BEM.
-* [Modernizr](https://modernizr.com/) - Modernizr tells you what HTML, CSS and JavaScript features the user’s browser has to offer.
-* [svg4everybody](https://github.com/jonathantneal/svg4everybody) - Open source external SVG polyfill for useing external SVG spritemaps
-* [PictureFill](https://github.com/scottjehl/picturefill) - A responsive image polyfill for <picture>, srcset, sizes, and more
-
-_[Back to top](#table-of-contents)_
-
-*****
-
-## Key Collaborators
-Thanks to our developers who made this Craft CMS project scaffolding possible.
-* [Mark Reckard](https://github.com/marker004)
-* [Matthew Soyka](https://github.com/m-soyka)
-
-_[Back to top](#table-of-contents)_
-
-*****
-
-## License
-
-###### The MIT License
-
-Copyright (c) 2017 MilesHerndon
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-_[Back to top](#table-of-contents)_
+craft - здесь находятся файлы CraftCMS
+  app - ядро CMS
+  config - файлы конфигурации
+  plugins - директория с плагинами
+  storage - служебные файлы CMS
+generator - модуль для генерации страниц, контейнеров и компонентов через консоль
+public - корневая директория для web сервера
+  build - директория с ресурсами, сгенерированными системой сборки
+  static - директория со статическими ресурсами
+    fonts - директория для шрифтов
+    images - директория для изображений
+    templates - корневая директория, относительно которой CMS ищет шаблоны
+      _components - директория для шаблонов компонентов
+      _containers - директория для шаблонов контейнеров
+      _pages - директория для шаблонов страниц
+      _webpack.templates - шаблоны, сгенерированные системой сборки
+      _layout - базовый шаблон для страниц
+  uploads - папка для загрузки ресурсов через CMS (не отслеживается системой контроля версий, при необходимости создать самостоятельно)
+src - папка с исходными ресурсами приложения
+  components - директория c компонентами
+  containers - директория с контейнерами
+  pages - директоря со страницами
+  styles - директория с глобальными стилями и константами
+  utils - директория для утилит
+  _webpack.templates - директория с базовыми шаблонами, в которые будут добавлены ресурсы, соранные системой сборки
+  favicon.png - фавикон для сайта
+  global.js - файл с глобальными скриптами и зависимостями
+  router.js - файл, где описываются зависимости относительно текущего роута
+utils - директория для утилит уровня приложения
+webpack.config - файлы конфигурации системы сборки
+.babelrc - файл конфигурации babel
+.editorconfig - файл конфигурации плагина EditorConfig для редактора кода
+.eslintignore - файл, описывающий исключения для ESLint
+.eslintrc.js - файл конфигурации ESLint
+LICENSE.txt - файл с лицензией
+package-lock.json - файл конфигурации nodejs (генерируется npm)
+package.json - файл конфигурации nodejs
+postcss.config.js - файл конфигурации postcss
+README.md - файл README
+webpack.config.js - корневой файл конфигурации системы сборки
+```
